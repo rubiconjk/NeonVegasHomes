@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>TrafficCams.kml</name>
+	<Style id="s_ylw-pushpin">
+		<IconStyle>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-blank.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-blank-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<Style id="s_ylw-pushpin_hl">
+		<IconStyle>
+			<scale>1.18182</scale>
+			<Icon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-blank.png</href>
+			</Icon>
+			<hotSpot x="32" y="1" xunits="pixels" yunits="pixels"/>
+		</IconStyle>
+		<ListStyle>
+			<ItemIcon>
+				<href>http://maps.google.com/mapfiles/kml/paddle/grn-blank-lv.png</href>
+			</ItemIcon>
+		</ListStyle>
+	</Style>
+	<StyleMap id="m_ylw-pushpin">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#s_ylw-pushpin</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#s_ylw-pushpin_hl</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder>
+		<name>Traffic Cams</name>
+		<open>1</open>
+		<Placemark>
+			<name>100</name>
+			<description><![CDATA[<img src="http://bugatti.nvfast.org/Snapshots/100.jpeg">]]></description>
+			<LookAt>
+				<longitude>-115.1624139838021</longitude>
+				<latitude>36.17611007739753</latitude>
+				<altitude>0</altitude>
+				<heading>0.0004817307621722904</heading>
+				<tilt>0</tilt>
+				<range>4161.378284728292</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-115.1624139838021,36.17611007739753,0</coordinates>
+			</Point>
+		</Placemark>
+		<Placemark>
+			<name>101</name>
+			<description><![CDATA[<img src="http://bugatti.nvfast.org/Snapshots/101.jpeg">]]></description>
+			<LookAt>
+				<longitude>-115.1545262299094</longitude>
+				<latitude>36.17421893396126</latitude>
+				<altitude>0</altitude>
+				<heading>0.005137021894227911</heading>
+				<tilt>0</tilt>
+				<range>4164.48881223583</range>
+				<gx:altitudeMode>relativeToSeaFloor</gx:altitudeMode>
+			</LookAt>
+			<styleUrl>#m_ylw-pushpin</styleUrl>
+			<Point>
+				<gx:drawOrder>1</gx:drawOrder>
+				<coordinates>-115.1562042722845,36.17510922561645,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>

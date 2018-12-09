@@ -1,0 +1,151 @@
+/* new stuff */
+
+.camImage{
+	width: 360px;
+	height: 240px;
+	position: absolute;
+	z-index:0;
+}
+.logoImage{
+	position: absolute;
+	z-index: 1;
+	bottom: 5px;
+	right: 10px;
+}
+
+.big-icon{
+font-size: 10em;
+}
+.med-icon{
+font-size: 6em;
+}
+.text-HLtemp{
+font-size: 2em;
+}
+.white-text{
+color: white;
+}
+.yellow-text{
+color: #EFA621;
+}
+.high-text{
+color: #8A0808;
+}
+.low-text{
+color:#08088A;
+}
+.table > tbody > tr > td{
+vertical-align:middle;
+}
+.valign{
+vertical-align: middle;
+}
+.btn-group-topnav {
+padding-top: 8px;
+padding-left: 4px;
+}
+.navbar-header {
+background-color: #337AB7;
+}
+.nvh-list{
+background-color: #50B849;
+}
+.container-top {
+background-color: #337AB7;
+}
+.link-white:link {
+color: white;
+text-decoration: none;
+}
+.link-white:visited {
+color: white;
+text-decoration: none;
+}
+.link-white:focus {
+color: white;
+background-color: #50B849;
+}
+#MainDiv {
+	padding-top: 10px;
+}
+.ButtonPad {
+	margin: 2px;
+}
+hr{
+	height: 1px;
+	background-color: #337AB7;
+}
+
+
+body {
+  padding-top: 51px;  
+}
+
+.col-xs-12 {
+  background-color: #fff;
+}
+#sidebar {
+  height: 100%;
+  padding-right: 0;
+  padding-top: 10px;
+}
+#sidebar .nav {
+  width: 95%;
+}
+#sidebar li {
+  border:0 #f2f2f2 solid;
+  border-bottom-width:1px;
+}
+#sidebar li > a:hover{
+	background-color: #337AB7;
+	color: white;
+}
+#sidebar li > a:focus{
+	background-color: #50B849;
+	color: white;
+}
+#sidebar li.active a{
+	background-color: #337AB7; !important;
+	color: white;
+}
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1600px; /* or 950px */
+}
+
+/* collapsed sidebar styles */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -41.6%;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -41.6%;
+  }
+  .row-offcanvas-right.active {
+    right: 41.6%;
+  }
+  .row-offcanvas-left.active {
+    left: 41.6%;
+  }
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 41.6%;
+  }
+  #sidebar {
+    padding-top: 10px;
+  }
+}
+
+/* Leaflet Stuff */
+#gated_map{height: 180px}

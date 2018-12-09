@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+Redirect 301 /analysis http://www.neonvegashomes.com/las-vegas-realtor-home-value-analysis.php
+</IfModule>
