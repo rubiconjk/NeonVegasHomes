@@ -2,69 +2,21 @@
 <html lang="en">
 
 	<head>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script>
-		jQuery(document).ready(function($) {
-			$.ajax({
-				url : "http://api.wunderground.com/api/eef40cced72f500c/alerts/almanac/conditions/forecast10day/q/pws:KNVLASVE92.json",
-				dataType : "jsonp",
-				success : function(parsed_json) {
-				var icon = parsed_json['current_observation']['icon_url'];
-				$("#WxNowIcon").append('<img src="' + icon + '" class="center-block img-responsive" width="75" alt="Current Conditions">');
-				var sky = parsed_json['current_observation']['weather'];
-				$("#WxSky").append('<strong>' + sky + '</strong>');
-				// Grab current conditions from weather station
-				var obsTime = parsed_json['current_observation']['observation_time'];
-				$("#obsTime").html('<span class="label label-danger">' + obsTime + '</span>');
-				var obsTemp = parsed_json['current_observation']['temp_f'];
-				$("#obsTemp").html('Temp:<strong>&nbsp' + obsTemp + '&nbspF</strong>');
-				var obsHumidity = parsed_json['current_observation']['relative_humidity'];
-				$("#obsHumidity").html('Humidity:<strong>&nbsp' + obsHumidity + '&nbsp</strong>');
-				var obsWindDir = parsed_json['current_observation']['wind_dir'];
-				var obsWindMph = parsed_json['current_observation']['wind_mph'];
-				var obsWindGust = parsed_json['current_observation']['wind_gust_mph'];
-				$("#obsWind").html('Wind:<strong>&nbsp' + obsWindDir + '&nbsp@&nbsp' + obsWindMph + '&nbspMph</strong>');
-				$("#obsWindGust").html('Gusting to:&nbsp<strong>' + obsWindGust + '&nbspMph</strong>');
-				var obsDewPt = parsed_json['current_observation']['dewpoint_f'];
-				$("#obsDewPt").html('Dewpoint:&nbsp<strong>' + obsDewPt + '&nbspF</strong>');
-				var obsPress = parsed_json['current_observation']['pressure_in'];
-				$("#obsPress").html('Pressure:&nbsp<strong>' + obsPress + '&nbspin&nbsp');
-				var obsRainHour = parsed_json['current_observation']['precip_1hr_in'];
-				$('#obsRainHour').html('Rain -1h:&nbsp<strong>' + obsRainHour + '&nbspin</strong>');
-				var obsRainToday = parsed_json['current_observation']['precip_today_in'];
-				$('#obsRainToday').html('Rain Today:&nbsp<strong>' + obsRainToday + '&nbspin</strong>');
-
-				// Check for weather alerts and advisories
-				var alerts = parsed_json['alerts'];
-				if (alerts.length == 0) {
-					$("#alert").html('<h5 class="text-center">There are no weather alerts at this time</h5>')
-				} else {
-					$("#alert").html('<h4 class="text-center">The following weather alerts are currently active:</h4>')
-					for (i = 0;i < alerts.length; i++) {
-						var alertDesc = parsed_json['alerts'][i]['description']
-						$("#alert").append('<h4><span class="label label-danger">' + alertDesc + '</span></h4>')
-						var alertExpire = parsed_json['alerts'][i]['expires']
-						var alertText = parsed_json['alerts'][i]['message']
-						$("#alert").append('<p><strong>Expires:&nbsp' + alertExpire + '</strong><br>' + alertText + '</p><br>')
-						}
-				};
-				// Almanac
-				var normHigh = parsed_json['almanac']['temp_high']['normal']['F'];
-				var normLow = parsed_json['almanac']['temp_low']['normal']['F'];
-				var recHigh = parsed_json['almanac']['temp_high']['record']['F'];
-				var recLow = parsed_json['almanac']['temp_low']['record']['F'];
-				var recHighYear = parsed_json['almanac']['temp_high']['recordyear'];
-				var recLowYear = parsed_json['almanac']['temp_low']['recordyear'];
-				$("#almanac").html("Normally, today's high temperature is&nbsp<strong>" + normHigh + '</strong>&nbspwith the low being&nbsp<strong>' + normLow + '</strong>.  The record high for this date was&nbsp<strong>' + recHigh + '</strong>&nbsprecorded in&nbsp<strong>' + recHighYear + '</strong>.  The record low of&nbsp<strong>' + recLow + '</strong>&nbspoccured in&nbsp<strong>' + recLowYear + '</strong>.')
-				}
+			jQuery(document).ready(function($){
+				$.ajax({
+					url:'https://api.weather.gov/stations/KLAS/observations/current',
+					dataType:'json-ld',
+					success:function(parsed_json){
+						var icon = parsed_json['id'];
+						var icon = 'test';
+						$('#current_icon').html('<p>' + icon + '</p>');
+					}
+				})
 			});
-
-		});
 		</script>
-	
-	
-	
-	
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,7 +35,6 @@
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/custom_css.css" rel="stylesheet">
 		<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="weather-icons-master/css/weather-icons.css">
 		
 
 	</head>
@@ -143,68 +94,24 @@
 						<img src="images/NVH_lasvegasvalleyweather.png" class="center-block img-responsive" alt="Las Vegas Valley Weather">
 
 						<!-- start focus -->
+						<h3 class="text-center">Las Vegas Area Weather Conditions and Forecast</h3>
 						<div>
-							<h3 class="text-center">Conditions at the Neon Vegas Homes Weather Station</h3>
-							<h4 class="text-center" id="obsTime">Checking Current Conditions</h4>
-						</div>
-						<div class="row text-center">
-							<div class="col-md-4 col-sm-4">
-								<div>
-									<br>
-									<p id="WxNowIcon"></p>
-									<h3 id="WxSky"></h4>
-									
+							<div class="row text-center">
+								<div class="col-sm-4">
+									<p class="current_icon"></p>
 								</div>
-							</div>
-							<div class="col-md-4 col-sm-4">
-								<div class="text-center">
-									<h3 id="WxNowText"></h3>
-									<h3 id="obsTemp">Temp: ...</h3>
-									<h3 id="obsHumidity">Humidity: ...</h3>
-									<h3 id="obsWind">Wind: ...</h3>
-									<h3 id="obsWindGust">Gusting to ...</h3>
+
+								<div class="col-sm-4">
+									Column 2
 								</div>
-							</div>
-							<div class="col-md-4 col-sm-4">
-								<div>
-									<h3 id="obsDewPt">Dewpoint: ...</h3>
-									<h3 id="obsPress">Pressure: ...</h3>
-									<h3 id="obsRainHour">Rain -1h: ...</h3>
-									<h3 id="obsRainToday">Rain Today: ...</h3>
+
+								<div class="col-sm-4">
+									Column 3
 								</div>
 							</div>
 						</div>
-
-						<p id="alert">Checking for weather alerts...</p>
-						<p>Almanac for today:</p>
-						<p id="almanac"></p>
-						<hr>
-						<div class="row text-center">
-							<div class="col-md-3 col-sm-3">
-								<h4>Radar Loop</h4>
-								<a href="http://radar.weather.gov/ridge/lite/N0R/ESX_loop.gif" target="_blank"><img src="http://radar.weather.gov/ridge/lite/N0R/ESX_loop.gif" alt="NWS Radar Animated Image" class="img-responsive"></a>
-							</div>
-							<div class="col-md-3 col-sm-3">
-								<h4>Forecast Highs</h4>
-								<a href="http://graphical.weather.gov/images/vef/MaxT1_vef.png" target="_blank"><img src="http://graphical.weather.gov/images/vef/MaxT1_vef.png" alt="NWS Forecast Highs" class="img-responsive"></a>
-							</div>
-							<div class="col-md-3 col-sm-3">
-								<h4>Forecast Lows</h4>
-								<a href="http://graphical.weather.gov/images/vef/MinT1_vef.png" target="_blank"><img src="http://graphical.weather.gov/images/vef/MinT1_vef.png" alt="NWS Forecast Lows" class="img-responsive"></a>
-							</div>
-							<div class="col-md-3 col-sm-3">
-								<h4>Precipitation</h4>
-								<a href="http://graphical.weather.gov/images/vef/PoP121_vef.png" target="_blank"><img src="http://graphical.weather.gov/images/vef/PoP121_vef.png" alt="NWS Probability of Precipitation" class="img-responsive"></a>
-							</div>
-						</div>
-						<hr>
-						<h3 class="text-center"><strong>Five Day Forecast</strong></h3>
-
-
-                        
-						<h6 class="text-center">Live data is from the Neon Vegas Homes personal weather station. Forecasts provided by Weather Underground. Weather RADAR and satellite courtesy of the National Weather Service.</h6>
 						
-						
+						<hr>
 						<!-- end focus -->
 						
 						<!-- begin footer information -->
@@ -250,9 +157,6 @@
 
 		<!-- core bootstrap javascript -->
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="js/bootstrap.min.js"></script>
 
