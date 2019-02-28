@@ -1,5 +1,6 @@
 <!-- Begin Script
 
+
 var yqlCallback = function(data){
 	var info = data.query.results.channel.item;
 	var skyNow = info.condition.code;
